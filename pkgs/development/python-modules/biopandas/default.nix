@@ -2,6 +2,7 @@
   lib,
   buildPythonPackage,
   fetchFromGitHub,
+  fetchpatch,
   setuptools,
   looseversion,
   mmtf-python,
@@ -21,6 +22,13 @@ buildPythonPackage rec {
     tag = "v${version}";
     hash = "sha256-dUeGjDDz9VA1NrFLGKy0ebaa+MU4c1tHi5YYkAspLRk=";
   };
+
+  patches = [
+    (fetchpatch {
+      url = "https://github.com/BioPandas/biopandas/commit/af3dabd5b958b947f2c9aa7cf580df26abed7ee0.patch";
+      hash = "sha256-qEou2TLJpYje0E+WJxJnWr4toYjxBxLp83tzmpG6+NE=";
+    })
+  ];
 
   pythonRelaxDeps = [ "looseversion" ];
 
